@@ -11,57 +11,62 @@
 
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Firebase References -->
-    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
+
+
 
 </head>
 
 <body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-messaging.js"></script>
+
+
+    <!-- Begin content -->
     <div class="jumbotron">
         <h1 class="display-3">Rock . Paper . Scissors</h1>
         <p class="lead">New and improved via lack of face-to-face human interaction!</p>
     </div>
-    <div class="container" style="width:50%">
-        <div class="row">
-            <div class="col-4">
-                <div class="card">
-                    <div class="wrapper">
-                        <div id="content">
-                            <div id="picture">
-                                <img class="img-fluid mx-auto d-block" src="assets/images/rock.jpg" alt="rock">
-                            </div>
-                            <div id="heading">
-                                <a href="#" class="btn btn-dark text-center mx-auto d-block">Rock</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-4 ">
-                <div class="card ">
-                    <div class="wrapper ">
-                        <div id="content ">
-                            <div id="picture ">
-                                <img class="img-fluid mx-auto d-block " src="assets/images/paper.jpg " alt="paper ">
+    <div id="instructions" class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-default">
+                    <div class="card-header">
+                        Create a username to start!
+                    </div>
+                    <div class="card-body">
+                        <!-- Sign-up Form (note the various input "types")-->
+                        <form role="form">
+                            <div class="form-group row">
+                                <label for="name-input">Name:</label>
+                                <input class="form-control" id="name-input" type="text">
                             </div>
-                            <div id="heading ">
-                                <a href="# " class="btn btn-dark text-center mx-auto d-block">Paper</a>
-                            </div>
-                        </div>
+                            <input id="add-user" class="btn btn-dark" type="submit" value="Submit">
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="col-4 ">
-                <div class="card ">
-                    <div class="wrapper ">
-                        <div id="content ">
-                            <div id="picture ">
-                                <img class="img-fluid mx-auto d-block " src="assets/images/scissor.jpg " alt="scissor ">
-                            </div>
-                            <div id="heading ">
-                                <a href="# " class="btn btn-dark text-center mx-auto d-block">Scissor</a>
+        </div>
+    </div>
+    <!-- Current Status -->
+    <div id="game-status" class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h3 class="">
+                                    <h6>Player 1:</h6>
+                                    <span id="highest-bidder"></span>
+                                </h3>
+                                <h3 class="">
+                                    <h6>Player 2:</h6>
+                                    <span id="highest-price"></span>
+                                </h3>
                             </div>
                         </div>
                     </div>
@@ -69,25 +74,39 @@
             </div>
         </div>
     </div>
-    <br></br>
-    <div class="row ">
-        <div class="col-lg-12 ">
-            <div class="card ">
-                <div class="wrapper ">
-                    <div id="content ">
-                        <div id="picture ">
-                        </div>
-                        <div id="heading ">
-                            <button type="button " class="px-5 btn btn-dark btn-lg btn-block " id="talk-shit ">Talk Shit Here!</button> </div>
+    <!-- Make Your Bid -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        Make Your Bid
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group row">
+                                <label for="bidder-name">Your Name</label>
+                                <input class="form-control" id="bidder-name" type="text">
+                            </div>
+                            <div class="form-group row">
+                                <label for="bidder-price">Your Price</label>
+                                <input class="form-control" id="bidder-price" type="number">
+                            </div>
+                            <button class="btn btn-primary" id="submit-bid" type="submit">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
+
         </div>
 
+    </div>
 
 
-        <!-- Javascript -->
-        <script type="text/javascript " src="assets/javascript/javascript.js "></script>
+    <!-- Javascript -->
+    <script type="text/javascript " src="assets/javascript/javascript.js "></script>
+
+    <!-- Media Queries -->
 
 </body>
 

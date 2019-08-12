@@ -1,49 +1,63 @@
-var playerArray = ["player1", "player2"];
-var player1Result;
-var player2Result;
-player1Wins;
-player2Wins;
-player1Losses;
-player2Losses;
-playerTie;
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+      apiKey: "AIzaSyAWs-znREwUaEfvGy-pQ2FLdP3YLNmlMcQ",
+      authDomain: "rps-multiplayer-4eaf2.firebaseapp.com",
+      databaseURL: "https://rps-multiplayer-4eaf2.firebaseio.com",
+      projectId: "rps-multiplayer-4eaf2",
+      storageBucket: "rps-multiplayer-4eaf2.appspot.com",
+      messagingSenderId: "1014367079911",
+      appId: "1:1014367079911:web:b3e618ed921fe9cb"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
+  // Create a variable to reference the database.
+  var database = firebase.database();
 
-$("#rock").on("click", function() {
+  // -----------------------------
 
-});
+  // connectionsRef references a specific location in our database.
+  // All of our connections will be stored in this directory.
+  var connectionsRef = database.ref("/connections");
 
-$("#paper").on("click", function() {
+  // '.info/connected' is a special location provided by Firebase that is updated
+  // every time the client's connection state changes.
+  // '.info/connected' is a boolean value, true if the client is connected and false if they are not.
+  var connectedRef = database.ref(".info/connected");
 
-});
+  // When the client's connection state changes...
+  connectedRef.on("value", function(snap) {
 
-$("#scissors").on("click", function() {
+      // If they are connected..
+      if (snap.val()) {
 
-});
+          // Add user to the connections list.
+          var con = connectionsRef.push(true);
+          // Remove user from the connection list when they disconnect.
+          con.onDisconnect().remove();
+      }
+  });
 
-// for player1
-// if (win)
-{
-    player1Wins++;
-}
-// if (lose)
-{
-    player1Losses++;
-}
-// if (tie)
-{
-    return;
-}
+  // When first loaded or when the connections list changes...
+  connectionsRef.on("value", function(snap) {
 
-// for player2
-// if (win)
-{
-    player2Wins++;
-}
-// else if (lose)
-{
-    player2Losses++;
-}
-// if (tie)
-{
-    return;
-}
+      // Display the viewer count in the html.
+      // The number of online users is the number of children in the connections list.
+      $("#connected-viewers").text(snap.numChildren());
+  });
+
+  // Capture Button Click
+  $("#add-user").on("click", function(event) {
+      // prevent page from refreshing when form tries to submit itself
+      event.preventDefault();
+
+      // Capture user inputs and store them into variables
+      var name = $("#name-input").val().trim();
+
+      // Console log each of the user inputs to confirm we are receiving them
+      console.log(name);
+
+      // Replaces the content in the "recent-member" div with the new info
+      $("#instructions").text("");
+      $("#highest-bidder").text(name);
+  });
