@@ -12,9 +12,6 @@
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
-
-
 </head>
 
 <body>
@@ -25,48 +22,45 @@
 
 
     <!-- Begin content -->
-    <div class="jumbotron">
-        <h1 class="display-3">Rock . Paper . Scissors</h1>
-        <p class="lead">New and improved via lack of face-to-face human interaction!</p>
-    </div>
-
-    <div id="instructions" class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card card-default">
-                    <div class="card-header">
-                        Create a username to start!
-                    </div>
-                    <div class="card-body">
-                        <!-- Sign-up Form (note the various input "types")-->
-                        <form role="form">
-                            <div class="form-group row">
-                                <label for="name-input">Name:</label>
-                                <input class="form-control" id="name-input" type="text">
-                            </div>
-                            <input id="add-user" class="btn btn-dark" type="submit" value="Submit">
-                        </form>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-3">Rock . Paper . Scissors</h1>
+            <p class="lead">New and improved via lack of face-to-face human interaction!</p>
         </div>
     </div>
+
     <!-- Current Status -->
-    <div id="game-status" class="container">
+    <div id="game-choices" class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+                        <p id="directions-text">Click a button to start playing!</p>
+
                         <div class="row">
-                            <div class="col-lg-12">
-                                <h3 class="">
-                                    <h6>Player 1:</h6>
-                                    <span id="highest-bidder"></span>
-                                </h3>
-                                <h3 class="">
-                                    <h6>Player 2:</h6>
-                                    <span id="highest-price"></span>
-                                </h3>
+                            <div class="col-md-4">
+                                <div class="card bg-dark text-white">
+                                    <img src="assets/images/rock.jpg" class="card-img" alt="...">
+                                    <div class="card-img-overlay">
+                                        <button id="rock" class="user-choice">Rock</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-light text-dark">
+                                    <img src="assets/images/paper.jpg" class="card-img" alt="...">
+                                    <div class="card-img-overlay">
+                                        <button id="paper" class="user-choice">Paper</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-dark text-white">
+                                    <img src="assets/images/scissor.jpg" class="card-img" alt="...">
+                                    <div class="card-img-overlay">
+                                        <button id="scissors" class="user-choice">Scissors</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -74,33 +68,23 @@
             </div>
         </div>
     </div>
-    <!-- Make Your Bid -->
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header">
-                        Make Your Bid
-                    </div>
                     <div class="card-body">
-                        <form>
-                            <div class="form-group row">
-                                <label for="bidder-name">Your Name</label>
-                                <input class="form-control" id="bidder-name" type="text">
-                            </div>
-                            <div class="form-group row">
-                                <label for="bidder-price">Your Price</label>
-                                <input class="form-control" id="bidder-price" type="number">
-                            </div>
-                            <button class="btn btn-primary" id="submit-bid" type="submit">Submit</button>
-                        </form>
+                        <p id="userchoice-text"></p>
+                        <p id="computerchoice-text"></p>
+                        <p id="wins-text"></p>
+                        <p id="losses-text"></p>
+                        <p id="ties-text"></p>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
+
 
 
     <!-- Javascript -->

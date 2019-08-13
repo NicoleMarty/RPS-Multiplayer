@@ -46,18 +46,31 @@
       $("#connected-viewers").text(snap.numChildren());
   });
 
+  // ------------------------------------
+  // Initial Values
+  var playerArray = ["player1", "player2"];
+  var choiceArray = ["rock", "paper", "scissors"];
+  var userGuess = "";
+  var roundWinner = "";
+
+
+  var initialBidder = "No one :-(";
+  var highPrice = initialBid;
+  var highBidder = initialBidder;
+
+
   // Capture Button Click
-  $("#add-user").on("click", function(event) {
+  $("user-choice").on("click", function(event) {
       // prevent page from refreshing when form tries to submit itself
       event.preventDefault();
 
       // Capture user inputs and store them into variables
-      var name = $("#name-input").val().trim();
+      var userGuess = $("#name-input").val().trim();
 
       // Console log each of the user inputs to confirm we are receiving them
       console.log(name);
 
       // Replaces the content in the "recent-member" div with the new info
-      $("#instructions").text("");
-      $("#highest-bidder").text(name);
+      $("#results").text(name);
+
   });
